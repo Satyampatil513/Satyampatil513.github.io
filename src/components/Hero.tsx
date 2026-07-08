@@ -47,12 +47,20 @@ export default function Hero() {
       {/* photo backdrop */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
+          src={fieldPhoto.mobileSrc}
+          alt={fieldPhoto.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover sm:hidden"
+        />
+        <Image
           src={fieldPhoto.src}
           alt={fieldPhoto.alt}
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="hidden object-cover sm:block"
         />
         <div
           className="absolute inset-0"

@@ -19,6 +19,7 @@ export const profile = {
 
 export const fieldPhoto = {
   src: "/images/summit-2400.jpg",
+  mobileSrc: "/images/summit-mobile.jpg",
   alt: "Satyam Patil standing on a snow-covered ridge in Himachal Pradesh, arms outstretched, with Himalayan peaks in the background",
 };
 
