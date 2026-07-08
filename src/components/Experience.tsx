@@ -49,7 +49,7 @@ export default function Experience() {
                         {exp.org}
                       </h3>
                       <span className="font-mono text-xs text-cyan">
-                        {exp.start} — {exp.end}
+                        {exp.start} – {exp.end}
                       </span>
                     </div>
                     <div className="mt-1 flex flex-wrap items-center gap-x-3 font-mono text-xs text-text-dim">

@@ -12,7 +12,7 @@ export const profile = {
     resume: "/resume.html",
   },
   about: [
-    "I'm a Research Engineer at Samsung Research working at the intersection of AI automation and low-level Android security — building pipelines that debug systems faster than humans can, and hardening SELinux policy across production builds.",
+    "I'm a Research Engineer at Samsung Research working at the intersection of AI automation and low-level Android security, building pipelines that debug systems faster than humans can and hardening SELinux policy across production builds.",
     "Alongside that, I co-founded Rankit, an AI-powered JEE prep platform now live and in use. My path ran through IIT Mandi (B.Tech CSE) and a semester at TU Dresden, with detours into on-device ML, full-stack products, and satellites that actually flew. I like problems where the AI layer and the systems layer meet.",
   ],
 };
@@ -25,9 +25,9 @@ export const fieldPhoto = {
 
 export const cansatMission = {
   title: "CanSat 2023",
-  subtitle: "Team 1072 STACSAT — NASA & AAS International Competition",
+  subtitle: "Team 1072 STACSAT, NASA & AAS International Competition",
   image: "/images/cansat-payload-cad.jpg",
-  imageCaption: "Payload physical layout, CDR 2023 — CAD by Team STACSAT",
+  imageCaption: "Payload physical layout, CDR 2023, CAD by Team STACSAT",
   description:
     "A can-sized satellite launched to ~725 m, descending under a two-stage parachute system before releasing an autonomous payload that self-stabilizes, deploys a landing gear, and raises a flag on touchdown. I led electrical power subsystem design and built the Ground Control System that received live telemetry over a 2 km radio link.",
   specs: [
@@ -36,13 +36,13 @@ export const cansatMission = {
     { label: "Telemetry Range", value: "2000 m" },
     { label: "GCS Response", value: "1 s" },
   ],
-  href: "https://github.com/BlackDevil513/CANSAT__GCS__Application",
+  href: "https://github.com/BlackDevil559/CANSAT__GCS__Application",
 };
 
 export type Telemetry = { label: string; value: string; unit?: string };
 
 export const telemetry: Telemetry[] = [
-  { label: "Countries Traveled", value: "14" },
+  { label: "Debug Automated", value: "80", unit: "%" },
   { label: "Experience", value: "2", unit: "+ yrs" },
   { label: "Global CANSAT Rank", value: "21", unit: "TOP" },
   { label: "Hackathon Wins", value: "3", unit: "×1st" },
@@ -71,7 +71,7 @@ export const experience: Experience[] = [
     stack: ["Android", "SELinux", "Security", "AI Automation"],
     image: "/images/samsung-noida.jpg",
     bullets: [
-      "Engineered AI-driven automation pipelines for anomaly signal generation, SEAndroid policy validation, and issue resolution — automating 80% of manual debugging tasks and accelerating issue detection across system builds.",
+      "Engineered AI-driven automation pipelines for anomaly signal generation, SEAndroid policy validation, and issue resolution, automating 80% of manual debugging tasks and accelerating issue detection across system builds.",
       "Resolved 100+ SEAndroid and security-module issues (policy misconfigurations, access violations, syscall denials), improving build stability, ICCC compliance, and debugging efficiency by 35%.",
     ],
   },
@@ -156,7 +156,7 @@ export const projects: Project[] = [
     tag: "Quant Research",
     blurb: "Clustering-based statistical arbitrage over 10 years of NSE data.",
     detail:
-      "Compared DBSCAN, OPTICS, and agglomerative clustering on PCA'd fundamentals — OPTICS won with 13 usable clusters. Every pair inside a cluster is Engle-Granger tested and screened by Hurst exponent for mean-reversion.",
+      "Compared DBSCAN, OPTICS, and agglomerative clustering on PCA'd fundamentals; OPTICS won with 13 usable clusters. Every pair inside a cluster is Engle-Granger tested and screened by Hurst exponent for mean-reversion.",
     tech: ["Python", "pandas", "scikit-learn", "statsmodels"],
     image: "/images/mtp2-clustering.jpg",
     imageSize: { w: 1400, h: 375 },
@@ -180,7 +180,7 @@ export const projects: Project[] = [
     tag: "Motion Design",
     blurb: "A code-first animation library for a poetic, minimal video series.",
     detail:
-      "Built a Motion Canvas-based animation pipeline to replace After Effects for the Khoj visual-storytelling series — scenes are written in TypeScript, tweened declaratively, and rendered straight to video.",
+      "Built a Motion Canvas-based animation pipeline to replace After Effects for the Khoj visual-storytelling series. Scenes are written in TypeScript, tweened declaratively, and rendered straight to video.",
     tech: ["TypeScript", "Motion Canvas", "Vite", "FFmpeg"],
     video: "/videos/khoj-demo.mp4",
     workflow: {
@@ -193,7 +193,7 @@ export const projects: Project[] = [
   {
     name: "Rankit",
     tag: "Co-founder · Live Product",
-    blurb: "AI-powered JEE prep platform — mock tests, DPPs, and live rank contests.",
+    blurb: "AI-powered JEE prep platform: mock tests, DPPs, and live rank contests.",
     detail:
       "Co-founded and built the platform end-to-end: adaptive mock tests, an accuracy-tiered daily practice problem engine, weekly contests, and performance analytics across topic, time, and difficulty.",
     tech: ["Next.js", "FastAPI", "PostgreSQL", "React Native"],
@@ -219,7 +219,7 @@ export const projects: Project[] = [
     tag: "Blockchain",
     blurb: "On-chain habit tracker built on Flow with daily target verification.",
     detail:
-      "Habit-tracking app on the Flow blockchain: Cadence contracts record a daily value against a target, and a reward mints only once every recorded entry across the streak clears the bar — paired with a Chrome extension for daily check-ins.",
+      "Habit-tracking app on the Flow blockchain: Cadence contracts record a daily value against a target, and a reward mints only once every recorded entry across the streak clears the bar. Paired with a Chrome extension for daily check-ins.",
     tech: ["Cadence", "Flow Blockchain", "Chrome Extension", "JavaScript"],
     href: "https://github.com/Satyampatil513/consistency",
     workflow: {
@@ -234,7 +234,7 @@ export const projects: Project[] = [
     tag: "Live Product",
     blurb: "Instant, targeted resume fixes powered by AI review.",
     detail:
-      "Upload a LaTeX resume and a background worker compiles it via a Redis job queue; on a failed compile, Gemini patches the offending lines and triggers one guarded auto-recompile — built on Next.js, Supabase, and Cloudflare Workers.",
+      "Upload a LaTeX resume and a background worker compiles it via a Redis job queue; on a failed compile, Gemini patches the offending lines and triggers one guarded auto-recompile. Built on Next.js, Supabase, and Cloudflare Workers.",
     tech: ["Next.js", "TypeScript", "Supabase", "Cloudflare Workers"],
     href: "https://resume-editor-eta.vercel.app",
     hrefLabel: "Live demo",
@@ -259,17 +259,17 @@ export type Achievement = { title: string; org: string; rank: string };
 export const achievements: Achievement[] = [
   {
     title: "CANSAT 2023",
-    org: "NASA & AAS — can-shaped satellite competition",
+    org: "NASA & AAS, can-shaped satellite competition",
     rank: "WORLD TOP 21",
   },
   {
     title: "SIF Space Hackathon",
-    org: "ISRO & IISF — national finalist",
+    org: "ISRO & IISF, national finalist",
     rank: "INDIA TOP 12",
   },
   {
     title: "Blockchain Hackathon, Cognizance'24",
-    org: "IIT Roorkee — Inter-College",
+    org: "IIT Roorkee, Inter-College",
     rank: "1st PLACE",
   },
   {
@@ -279,7 +279,7 @@ export const achievements: Achievement[] = [
   },
   {
     title: "Astrophysics Hackathon (Merope)",
-    org: "IIT Mandi — Intra-College, Dec 2021",
+    org: "IIT Mandi, Intra-College, Dec 2021",
     rank: "1st PLACE",
   },
 ];
@@ -293,8 +293,7 @@ export const skills: { group: string; items: string[] }[] = [
     group: "AI / ML",
     items: [
       "LangGraph",
-      "OpenAI API",
-      "Anthropic API",
+      "LLM APIs (OpenAI, Anthropic)",
       "RAG",
       "FAISS",
       "FastEmbed",
@@ -335,7 +334,7 @@ export const education = [
 ];
 
 export const positions = [
-  "Co-coordinator, Space Technology & Astronomy Cell (STAC, IIT Mandi) — managed a 24-member club and its annual operations.",
-  "Media & Outreach Head, Xpecto'23 — led the media team for IIT Mandi's annual technical fest.",
-  "Core Team Member, Entrepreneurship Cell IIT Mandi — built a stock-exchange simulation site.",
+  "Co-coordinator, Space Technology & Astronomy Cell (STAC, IIT Mandi): managed a 24-member club and its annual operations.",
+  "Media & Outreach Head, Xpecto'23: led the media team for IIT Mandi's annual technical fest.",
+  "Core Team Member, Entrepreneurship Cell IIT Mandi: built a stock-exchange simulation site.",
 ];

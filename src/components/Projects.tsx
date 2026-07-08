@@ -56,13 +56,13 @@ export default function Projects() {
                     <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-teal">
                       {p.tag}
                     </span>
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-2">
                       {p.pdfHref && (
                         <a
                           href={p.pdfHref}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1 font-mono text-[0.62rem] uppercase tracking-widest text-text-dim transition-colors hover:text-cyan"
+                          className="flex items-center gap-1.5 rounded-md border border-cyan/30 bg-cyan/[0.06] px-2.5 py-1 font-mono text-[0.65rem] uppercase tracking-widest text-cyan transition-colors hover:border-cyan/60 hover:bg-cyan/[0.12]"
                         >
                           {p.pdfLabel ?? "View PDF"}
                           <FileIcon className="h-3.5 w-3.5" />
@@ -73,7 +73,7 @@ export default function Projects() {
                           href={p.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1 font-mono text-[0.62rem] uppercase tracking-widest text-text-dim transition-colors hover:text-cyan"
+                          className="flex items-center gap-1.5 rounded-md border border-cyan/30 bg-cyan/[0.06] px-2.5 py-1 font-mono text-[0.65rem] uppercase tracking-widest text-cyan transition-colors hover:border-cyan/60 hover:bg-cyan/[0.12]"
                         >
                           {p.hrefLabel ?? "GitHub"}
                           <ExternalIcon className="h-3.5 w-3.5" />

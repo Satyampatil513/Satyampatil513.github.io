@@ -32,9 +32,9 @@ const siteUrl = "https://satyampatil.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Satyam Patil — AI & Systems Engineer",
+  title: "Satyam Patil | AI & Systems Engineer",
   description:
-    "Satyam Patil — Research Engineer at Samsung Research. IIT Mandi CS. I build multi-agent AI systems and secure Android internals. NASA CANSAT & ISRO finalist.",
+    "Satyam Patil, Research Engineer at Samsung Research. IIT Mandi CS. I build multi-agent AI systems and secure Android internals. NASA CANSAT & ISRO finalist.",
   keywords: [
     "Satyam Patil",
     "AI Engineer",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Satyam Patil" }],
   openGraph: {
-    title: "Satyam Patil — AI & Systems Engineer",
+    title: "Satyam Patil | AI & Systems Engineer",
     description:
       "Research Engineer at Samsung Research. I build multi-agent AI systems and secure Android internals.",
     url: siteUrl,
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Satyam Patil — AI & Systems Engineer",
+    title: "Satyam Patil | AI & Systems Engineer",
     description:
       "Research Engineer at Samsung Research. I build multi-agent AI systems and secure Android internals.",
   },

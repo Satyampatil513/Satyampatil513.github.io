@@ -113,7 +113,7 @@ export default function Hero() {
 
           <p className="mt-5 max-w-xl text-base leading-relaxed text-text sm:text-lg">
             {profile.tagline} From on-device ML and satellites that flew to
-            production multi-agent systems — I work where the AI layer meets the
+            production multi-agent systems, I work where the AI layer meets the
             systems layer.
           </p>
 
