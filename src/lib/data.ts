@@ -161,19 +161,6 @@ export const projects: Project[] = [
     image: "/images/mtp2-clustering.jpg",
     imageSize: { w: 1400, h: 375 },
     imageLayout: "full",
-    workflow: {
-      steps: [
-        "Filter Flat Stocks",
-        "PCA on Fundamentals",
-        "Cluster (OPTICS)",
-        "Engle-Granger Cointegration",
-        "Hedge Ratio + Hurst",
-        "p<0.5 & Hurst<0.5 Filter",
-      ],
-      loopFrom: 5,
-      loopTo: 3,
-      loopLabel: "reject pair",
-    },
   },
   {
     name: "Khoj",
@@ -222,12 +209,6 @@ export const projects: Project[] = [
       "Habit-tracking app on the Flow blockchain: Cadence contracts record a daily value against a target, and a reward mints only once every recorded entry across the streak clears the bar. Paired with a Chrome extension for daily check-ins.",
     tech: ["Cadence", "Flow Blockchain", "Chrome Extension", "JavaScript"],
     href: "https://github.com/Satyampatil513/consistency",
-    workflow: {
-      steps: ["Wallet Login (FCL)", "Create On-chain Record", "Submit Daily Value", "Contract Checks Target", "Display Progress"],
-      loopFrom: 3,
-      loopTo: 2,
-      loopLabel: "next day",
-    },
   },
   {
     name: "AI Resume Editor",
@@ -241,13 +222,12 @@ export const projects: Project[] = [
     workflow: {
       steps: [
         "Upload LaTeX Zip",
-        "Queue Compile Job",
-        "Poll Job Result",
+        "User Input Modifications",
+        "AI Review Call (Gemini)",
         "Worker Compiles (pdflatex)",
-        "AI Auto-Fix (Gemini)",
         "Recompile (guarded)",
       ],
-      loopFrom: 5,
+      loopFrom: 4,
       loopTo: 2,
       loopLabel: "auto-fix retry",
     },
