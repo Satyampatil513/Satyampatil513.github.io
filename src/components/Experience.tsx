@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { experience } from "@/lib/data";
 import { SectionHeader } from "./Hud";
 import Reveal from "./Reveal";
@@ -41,38 +42,54 @@ export default function Experience() {
               </span>
 
               <div className="panel rounded-lg p-5 transition-colors hover:border-cyan/30 sm:p-6">
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <h3 className="font-display text-xl font-bold text-text-bright">
-                    {exp.org}
-                  </h3>
-                  <span className="font-mono text-xs text-cyan">
-                    {exp.start} — {exp.end}
-                  </span>
-                </div>
-                <div className="mt-1 flex flex-wrap items-center gap-x-3 font-mono text-xs text-text-dim">
-                  <span className="text-teal">{exp.role}</span>
-                  <span className="opacity-40">/</span>
-                  <span>{exp.location}</span>
-                </div>
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                      <h3 className="font-display text-xl font-bold text-text-bright">
+                        {exp.org}
+                      </h3>
+                      <span className="font-mono text-xs text-cyan">
+                        {exp.start} — {exp.end}
+                      </span>
+                    </div>
+                    <div className="mt-1 flex flex-wrap items-center gap-x-3 font-mono text-xs text-text-dim">
+                      <span className="text-teal">{exp.role}</span>
+                      <span className="opacity-40">/</span>
+                      <span>{exp.location}</span>
+                    </div>
 
-                <ul className="mt-4 space-y-2.5">
-                  {exp.bullets.map((b, j) => (
-                    <li key={j} className="flex gap-2.5 text-sm leading-relaxed text-text">
-                      <span className="mt-2 h-1 w-1 flex-none rounded-full bg-cyan/70" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
+                    <ul className="mt-4 space-y-2.5">
+                      {exp.bullets.map((b, j) => (
+                        <li key={j} className="flex gap-2.5 text-sm leading-relaxed text-text">
+                          <span className="mt-2 h-1 w-1 flex-none rounded-full bg-cyan/70" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {exp.stack.map((s) => (
-                    <span
-                      key={s}
-                      className="rounded border border-[var(--panel-border)] px-2 py-0.5 font-mono text-[0.65rem] text-text-dim"
-                    >
-                      {s}
-                    </span>
-                  ))}
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                      {exp.stack.map((s) => (
+                        <span
+                          key={s}
+                          className="rounded border border-[var(--panel-border)] px-2 py-0.5 font-mono text-[0.65rem] text-text-dim"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {exp.image && (
+                    <div className="relative h-44 w-full flex-none overflow-hidden rounded-md border border-[var(--panel-border)] sm:h-36 sm:w-40">
+                      <Image
+                        src={exp.image}
+                        alt={`${exp.org} — ${exp.role}`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 160px"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </Reveal>

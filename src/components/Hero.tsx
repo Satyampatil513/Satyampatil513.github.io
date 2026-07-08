@@ -43,9 +43,9 @@ export default function Hero() {
   }, [typed, lineIdx]);
 
   return (
-    <section id="top" className="relative min-h-[100svh]">
+    <section id="top" className="relative isolate min-h-[100svh]">
       {/* photo backdrop */}
-      <div className="absolute inset-0 -z-[1] overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
           src={fieldPhoto.src}
           alt={fieldPhoto.alt}
@@ -58,20 +58,20 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(2,4,9,0.55) 0%, rgba(2,4,9,0.72) 38%, rgba(2,4,9,0.94) 78%, var(--bg) 100%)",
+              "linear-gradient(180deg, rgba(2,4,9,0.32) 0%, rgba(2,4,9,0.5) 38%, rgba(2,4,9,0.82) 78%, var(--bg) 100%)",
           }}
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(90deg, rgba(2,4,9,0.55) 0%, rgba(2,4,9,0.15) 45%, rgba(2,4,9,0.55) 100%)",
+              "linear-gradient(90deg, rgba(2,4,9,0.4) 0%, rgba(2,4,9,0.08) 45%, rgba(2,4,9,0.4) 100%)",
           }}
         />
         <div className="grid-overlay absolute inset-0 opacity-[0.06]" />
       </div>
 
-      <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-5 pb-16 pt-28 sm:px-8">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-5 pb-16 pt-28 sm:px-8">
       {/* boot log */}
       <div className="mb-6 font-mono text-xs text-cyan/80 sm:text-sm">
         {bootLines.slice(0, lineIdx).map((l, i) => (

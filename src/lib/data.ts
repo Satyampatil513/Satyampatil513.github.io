@@ -41,8 +41,8 @@ export const cansatMission = {
 export type Telemetry = { label: string; value: string; unit?: string };
 
 export const telemetry: Telemetry[] = [
-  { label: "Debug Automated", value: "80", unit: "%" },
-  { label: "Security Issues Resolved", value: "100", unit: "+" },
+  { label: "Countries Traveled", value: "14" },
+  { label: "Experience", value: "2", unit: "+ yrs" },
   { label: "Global CANSAT Rank", value: "21", unit: "TOP" },
   { label: "Hackathon Wins", value: "3", unit: "×1st" },
 ];
@@ -56,6 +56,7 @@ export type Experience = {
   stack: string[];
   bullets: string[];
   status: "active" | "past";
+  image?: string;
 };
 
 export const experience: Experience[] = [
@@ -67,6 +68,7 @@ export const experience: Experience[] = [
     end: "Present",
     status: "active",
     stack: ["Android", "SELinux", "Security", "AI Automation"],
+    image: "/images/samsung-noida.jpg",
     bullets: [
       "Engineered AI-driven automation pipelines for anomaly signal generation, SEAndroid policy validation, and issue resolution — automating 80% of manual debugging tasks and accelerating issue detection across system builds.",
       "Resolved 100+ SEAndroid and security-module issues (policy misconfigurations, access violations, syscall denials), improving build stability, ICCC compliance, and debugging efficiency by 35%.",
@@ -114,33 +116,15 @@ export type Project = {
   hrefLabel?: string;
   tag: string;
   image?: string;
-  workflow: Workflow;
+  imageSize?: { w: number; h: number };
+  imageLayout?: "full" | "inline";
+  video?: string;
+  pdfHref?: string;
+  pdfLabel?: string;
+  workflow?: Workflow;
 };
 
 export const projects: Project[] = [
-  {
-    name: "Rankit",
-    tag: "Co-founder · Live Product",
-    blurb: "AI-powered JEE prep platform — mock tests, DPPs, and live rank contests.",
-    detail:
-      "Co-founded and built the platform end-to-end: adaptive mock tests, an accuracy-tiered daily practice problem engine, weekly contests, and performance analytics across topic, time, and difficulty.",
-    tech: ["Next.js", "FastAPI", "PostgreSQL", "React Native"],
-    href: "https://ed-tech-lyart-pi.vercel.app",
-    hrefLabel: "Live site",
-    workflow: {
-      steps: [
-        "Check Existing DPP",
-        "Subject Accuracy Lookup",
-        "Accuracy → Tier",
-        "Pick Topic (≥3 Qs)",
-        "Pick Qs (fallback tiers)",
-        "Score & Award XP",
-      ],
-      loopFrom: 5,
-      loopTo: 0,
-      loopLabel: "next session",
-    },
-  },
   {
     name: "CLAI",
     tag: "CLI AI Assistant",
@@ -149,6 +133,9 @@ export const projects: Project[] = [
       "Short- and long-term memory via FAISS + FastEmbed gives persistent awareness of folders, past commands, and workflows; integrates Windows automation APIs for direct OS control, with a danger check gating any command before it runs.",
     tech: ["Python", "FAISS", "FastEmbed", "Windows Automation"],
     href: "https://github.com/Satyampatil513/CLAI",
+    image: "/images/clai-terminal.jpg",
+    imageSize: { w: 1048, h: 572 },
+    imageLayout: "inline",
     workflow: {
       steps: [
         "RAG Memory Search",
@@ -164,6 +151,58 @@ export const projects: Project[] = [
     },
   },
   {
+    name: "Pair Trading Research",
+    tag: "Quant Research",
+    blurb: "Clustering-based statistical arbitrage over 10 years of NSE data.",
+    detail:
+      "Compared DBSCAN, OPTICS, and agglomerative clustering on PCA'd fundamentals — OPTICS won with 13 usable clusters. Every pair inside a cluster is Engle-Granger tested and screened by Hurst exponent for mean-reversion.",
+    tech: ["Python", "pandas", "scikit-learn", "statsmodels"],
+    image: "/images/mtp2-clustering.jpg",
+    imageSize: { w: 1400, h: 375 },
+    imageLayout: "full",
+    workflow: {
+      steps: [
+        "Filter Flat Stocks",
+        "PCA on Fundamentals",
+        "Cluster (OPTICS)",
+        "Engle-Granger Cointegration",
+        "Hedge Ratio + Hurst",
+        "p<0.5 & Hurst<0.5 Filter",
+      ],
+      loopFrom: 5,
+      loopTo: 3,
+      loopLabel: "reject pair",
+    },
+  },
+  {
+    name: "Khoj",
+    tag: "Motion Design",
+    blurb: "A code-first animation library for a poetic, minimal video series.",
+    detail:
+      "Built a Motion Canvas-based animation pipeline to replace After Effects for the Khoj visual-storytelling series — scenes are written in TypeScript, tweened declaratively, and rendered straight to video.",
+    tech: ["TypeScript", "Motion Canvas", "Vite", "FFmpeg"],
+    video: "/videos/khoj-demo.mp4",
+    workflow: {
+      steps: ["Write Scene (TSX)", "Define Tweening", "Live Preview (Vite)", "Adjust Timing", "Render (FFmpeg)"],
+      loopFrom: 3,
+      loopTo: 1,
+      loopLabel: "doesn't feel right",
+    },
+  },
+  {
+    name: "Rankit",
+    tag: "Co-founder · Live Product",
+    blurb: "AI-powered JEE prep platform — mock tests, DPPs, and live rank contests.",
+    detail:
+      "Co-founded and built the platform end-to-end: adaptive mock tests, an accuracy-tiered daily practice problem engine, weekly contests, and performance analytics across topic, time, and difficulty.",
+    tech: ["Next.js", "FastAPI", "PostgreSQL", "React Native"],
+    href: "https://ed-tech-lyart-pi.vercel.app",
+    hrefLabel: "Live site",
+    image: "/images/rankit-analytics.jpg",
+    imageSize: { w: 1882, h: 443 },
+    imageLayout: "full",
+  },
+  {
     name: "CanSat Ground Control",
     tag: "Aerospace",
     blurb: "Ground station commanding a can-sized satellite over a 2 km link.",
@@ -171,12 +210,8 @@ export const projects: Project[] = [
       "Real-time command transmission over 2000 m range with 1-second response time, improving operational efficiency by 35%. A dedicated producer process generates telemetry while a Qt timer polls it once a second to refresh the dashboard.",
     tech: ["C#", "DSA", "Microcontroller"],
     href: "https://github.com/BlackDevil559/CANSAT__GCS__Application",
-    workflow: {
-      steps: ["Generate Telemetry", "Push to Queue", "Timer Tick (1s)", "Pull from Queue", "Update Dashboard"],
-      loopFrom: 4,
-      loopTo: 0,
-      loopLabel: "every 1s",
-    },
+    pdfHref: "/cansat-cdr.pdf",
+    pdfLabel: "View CDR PDF",
   },
   {
     name: "Consistify",
@@ -214,43 +249,6 @@ export const projects: Project[] = [
       loopFrom: 5,
       loopTo: 2,
       loopLabel: "auto-fix retry",
-    },
-  },
-  {
-    name: "Pair Trading Research",
-    tag: "Quant Research",
-    blurb: "Clustering-based statistical arbitrage over 10 years of NSE data.",
-    detail:
-      "Compared DBSCAN, OPTICS, and agglomerative clustering on PCA'd fundamentals — OPTICS won with 13 usable clusters. Every pair inside a cluster is Engle-Granger tested and screened by Hurst exponent for mean-reversion.",
-    tech: ["Python", "pandas", "scikit-learn", "statsmodels"],
-    image: "/images/mtp2-clustering.jpg",
-    workflow: {
-      steps: [
-        "Filter Flat Stocks",
-        "PCA on Fundamentals",
-        "Cluster (OPTICS)",
-        "Engle-Granger Cointegration",
-        "Hedge Ratio + Hurst",
-        "p<0.5 & Hurst<0.5 Filter",
-      ],
-      loopFrom: 5,
-      loopTo: 3,
-      loopLabel: "reject pair",
-    },
-  },
-  {
-    name: "Human Activity Detector",
-    tag: "Machine Learning",
-    blurb: "Two-tier classifier predicting human activity at 91% accuracy.",
-    detail:
-      "A tier-1 KNN sorts each reading into a coarse category (fall / active / ascend-descend), then hands off to one of three tier-2 Random Forest models for the specific activity label — 13 activities total, hyperparameter-tuned to 91% accuracy.",
-    tech: ["Python", "Flask", "scikit-learn"],
-    href: "https://github.com/Satyampatil513/Human_Activity_Detector",
-    workflow: {
-      steps: ["Sensor Params (8 floats)", "Feature Vector Reshape", "Tier-1 KNN Classify", "Branch to Tier-2 RF", "Render Prediction"],
-      loopFrom: 4,
-      loopTo: 0,
-      loopLabel: "next sample",
     },
   },
 ];
