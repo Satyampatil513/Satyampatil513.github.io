@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satyam Patil - Resume</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'EB Garamond', 'Times New Roman', Times, serif;
+    font-size: 10.4pt;
+    line-height: 1.26;
+    color: #000;
+    background: #fff;
+    padding: 0.38in 0.6in;
+    max-width: 8.5in;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .header { text-align: center; margin-bottom: 4px; }
+  .header h1 {
+    font-size: 21pt;
+    font-variant: small-caps;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+  .header .location { font-size: 10pt; margin-bottom: 1px; }
+  .header .contacts { font-size: 10pt; }
+  .header .contacts a { color: #000; text-decoration: none; }
+  .contacts-sep { margin: 0 4px; }
+
+  /* SECTIONS */
+  .section { margin-top: 5px; }
+  .section-title {
+    font-size: 10.4pt;
+    font-variant: small-caps;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-bottom: 0.8px solid #000;
+    padding-bottom: 1px;
+    margin-bottom: 3px;
+  }
+
+  /* ENTRIES */
+  .entry { margin-bottom: 3px; }
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .entry-header .org { font-weight: 700; font-size: 10.4pt; }
+  .entry-header .date { font-size: 9.8pt; font-style: italic; }
+  .entry-subtitle {
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+    font-size: 9.8pt;
+  }
+
+  /* SKILLS */
+  .skills-row { margin-bottom: 0; font-size: 10.4pt; line-height: 1.26; }
+  .skills-row .label { font-weight: 700; }
+
+  /* PROJECTS */
+  .project { margin-bottom: 3px; }
+  .project-header { font-weight: 700; font-size: 10.4pt; }
+  .project-header .tech { font-weight: 400; font-style: italic; }
+  .project-header a { color: #000; text-decoration: none; font-style: italic; font-weight: 400; }
+
+  /* BULLETS */
+  ul { padding-left: 14px; margin-top: 1px; }
+  ul li { margin-bottom: 1px; font-size: 10.4pt; }
+  ul li b { font-weight: 700; }
+
+  @media print {
+    body { padding: 0.33in 0.55in; }
+    @page { margin: 0; size: A4; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Satyam Patil</h1>
+  <div class="location">Maharashtra, India</div>
+  <div class="contacts">
+    &#9990; +91 9370162911
+    <span class="contacts-sep">&#9993;</span> satyam.content@gmail.com
+    <span class="contacts-sep">&#128279;</span> <a href="https://linkedin.com/in/satyam-patil-045771223">LinkedIn</a>
+    <span class="contacts-sep">&#9096;</span> <a href="https://github.com/Satyampatil513">GitHub</a>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<div class="section">
+  <div class="section-title">Education</div>
+  <div class="entry">
+    <div class="entry-header">
+      <span class="org">Indian Institute of Technology, Mandi</span>
+      <span class="date">Nov 2021 &ndash; Jun 2025</span>
+    </div>
+    <div class="entry-subtitle">
+      <span>B.Tech, Computer Science and Engineering &nbsp;(CGPA of 8.25)</span>
+      <span>Himachal Pradesh, India</span>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry-header">
+      <span class="org">TU Dresden</span>
+      <span class="date">Oct 2023 &ndash; Feb 2024</span>
+    </div>
+    <div class="entry-subtitle">
+      <span>Semester Exchange Student in Computer Science and Engineering &nbsp;(SGPA of 9)</span>
+      <span>Dresden, Germany</span>
+    </div>
+  </div>
+</div>
+
+<!-- TECHNICAL SKILLS -->
+<div class="section">
+  <div class="section-title">Technical Skills</div>
+  <div class="skills-row"><span class="label">Languages:</span> Python, C++, JavaScript, TypeScript, SQL, Dart, Swift</div>
+  <div class="skills-row"><span class="label">AI / ML:</span> LangGraph, LLM APIs (OpenAI, Anthropic), RAG, FAISS, FastEmbed, Pandas, NumPy, scikit-learn</div>
+  <div class="skills-row"><span class="label">Technologies:</span> FastAPI, Flask, ReactJS, React-Native, NodeJS, VueJS, Flutter, PostgreSQL, Git</div>
+  <div class="skills-row"><span class="label">Coursework:</span> Data Science (Certificate), DSA, Database Management, Formal Language and Automata Theory, Computer Vision</div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section">
+  <div class="section-title">Experience</div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="org">Samsung Research</span>
+      <span class="date">June 2025 &ndash; Present</span>
+    </div>
+    <div class="entry-subtitle">
+      <span><em>Research Engineer &nbsp;|&nbsp; Android, SELinux, Security, Automation</em></span>
+      <span>Noida</span>
+    </div>
+    <ul>
+      <li>Engineered <b>AI-driven automation pipelines</b> for anomaly signal generation, SEAndroid policy validation, and issue resolution, automating <b>80% of manual debugging tasks</b> and accelerating issue detection across system builds.</li>
+      <li>Resolved <b>100+ SEAndroid and security module issues</b> related to policy misconfigurations, access violations, and system call denials, improving build stability, ICCC compliance, and debugging efficiency by <b>35%</b>.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="org">Brainwave Science</span>
+      <span class="date">Feb 2024 &ndash; Dec 2024</span>
+    </div>
+    <div class="entry-subtitle">
+      <span><em>Full Stack Developer Intern &nbsp;|&nbsp; VueJS, PostgreSQL, Fastify, PsychoPy, React-Native, Android, iOS</em></span>
+      <span>Remote</span>
+    </div>
+    <ul>
+      <li>Built a unified <b>full-stack platform</b> including a VueJS web frame for PsychoPy browser experiments, an RTSP-based IP Camera Streaming System, and a cross-platform Educational App (Android/iOS) for <b>500+ users</b>.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="org">LASR Lab, TU Dresden</span>
+      <span class="date">Oct 2023 &ndash; Jan 2024</span>
+    </div>
+    <div class="entry-subtitle">
+      <span><em>Application Development Intern &nbsp;|&nbsp; Kotlin, Gradle, Machine Learning, Computer Vision</em></span>
+      <span>Dresden, Germany</span>
+    </div>
+    <ul>
+      <li>Designed an <b>Android application</b> for the Digit Tactile Sensor (efficiency +40%) with <b>real-time object detection</b> using on-device ML, reducing false detection rates by <b>30%</b>.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="section">
+  <div class="section-title">Projects</div>
+
+  <div class="project">
+    <div class="project-header">Rankit &ndash; AI Startup &nbsp;<span class="tech">| Python, LangGraph, FastAPI, FAISS, FastEmbed, OpenAI API</span></div>
+    <ul>
+      <li>Built a <b>multi-agent backend</b> from scratch with query routing, tool selection, task decomposition, and RAG pipelines using FAISS + FastEmbed; exposed via FastAPI handling LLM-powered requests end-to-end in production.</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <div class="project-header">CLAI &ndash; Command Line AI Assistant &nbsp;<span class="tech">| Python, FAISS, FastEmbed, Windows Automation &nbsp;| <a href="https://github.com/Satyampatil513/CLAI">Github</a></span></div>
+    <ul>
+      <li>Built a <b>context-aware AI assistant</b> for Windows with short-term and long-term memory using FAISS + FastEmbed, enabling persistent awareness of folders, past commands, and workflows; integrated Windows automation APIs for direct OS control.</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <div class="project-header">Ground Control System for CanSat &nbsp;<span class="tech">| C#, DSA, Microcontroller &nbsp;| <a href="https://github.com/BlackDevil559/CANSAT__GCS__Application">Github</a></span></div>
+    <ul>
+      <li>Engineered a C-based application to control a CanSat satellite with <b>real-time command transmission</b> over 2000m range, 1-second response time, improving operational efficiency by 35%.</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <div class="project-header">Human Activity Detector &nbsp;<span class="tech">| Python, Flask, Machine Learning &nbsp;| <a href="https://github.com/Satyampatil513/Human_Activity_Detector">Github</a></span></div>
+    <ul>
+      <li>Built a <b>Random Forest model</b> predicting human activity with <b>91% accuracy</b> via hyperparameter tuning; improved data processing speed by 15%.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="section">
+  <div class="section-title">Achievements</div>
+  <ul>
+    <li>Ranked among <b>World's top 21 teams</b> in CANSAT'23, a can-shaped satellite competition organized by NASA and AAS.</li>
+    <li>Ranked among <b>India's top 12 teams</b> as a finalist in SIF Space Hackathon organized by ISRO and IISF.</li>
+    <li><b>1st Position</b> in Inter-College Blockchain Hackathon Cognizance'24 IIT Roorkee &nbsp;|&nbsp; <b>Best Blockchain Project</b> in Frosthack'23 IIT Mandi.</li>
+    <li><b>1st Position</b> in Intra-College Astrophysics Hackathon (Merope, Dec 2021).</li>
+  </ul>
+</div>
+
+<!-- POSITIONS OF RESPONSIBILITY -->
+<div class="section">
+  <div class="section-title">Positions of Responsibility</div>
+  <ul>
+    <li><b>Co-coordinator</b>, Space Technology and Astronomy Cell (STAC, IIT Mandi) &mdash; managed club of 24 students and its annual functioning.</li>
+    <li><b>Media and Outreach Head</b>, Xpecto'23 &mdash; organized the media team for IIT Mandi's Annual Technical Fest.</li>
+    <li><b>Core Team Member</b>, Entrepreneurship Cell IIT Mandi &mdash; built a stock exchange simulation website and volunteered in club operations.</li>
+  </ul>
+</div>
+
+</body>
+</html>
