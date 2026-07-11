@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Kalam, Space_Grotesk } from "next/font/google";
+import { Inter, JetBrains_Mono, Kalam, Newsreader } from "next/font/google";
 import "@xyflow/react/dist/style.css";
 import "./globals.css";
 
@@ -9,9 +9,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const newsreader = Newsreader({
   variable: "--font-display",
   subsets: ["latin"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -71,7 +72,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${kalam.variable} h-full antialiased`}
+      className={`${inter.variable} ${newsreader.variable} ${jetbrainsMono.variable} ${kalam.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>

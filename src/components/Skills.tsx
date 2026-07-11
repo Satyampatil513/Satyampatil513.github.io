@@ -1,53 +1,45 @@
 import { skills, positions } from "@/lib/data";
-import { SectionHeader } from "./Hud";
+import { Section, SectionHeading } from "./Section";
 import Reveal from "./Reveal";
 
 export default function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-24 sm:px-8">
-      <Reveal>
-        <SectionHeader index="05" sub="SYSTEMS" title="Skills" />
-      </Reveal>
+    <Section id="skills">
+      <SectionHeading title="Toolbox" sub="What I reach for, and where I've led." />
 
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div>
         {skills.map((s, i) => (
-          <Reveal key={s.group} delay={i * 70}>
-            <div className="h-full panel rounded-lg p-6">
-              <div className="mb-4 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-cyan">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
-                {s.group}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {s.items.map((it) => (
-                  <span
-                    key={it}
-                    className="rounded-md border border-[var(--panel-border)] bg-black/20 px-2.5 py-1 font-mono text-xs text-text transition-colors hover:border-cyan/40 hover:text-text-bright"
-                  >
-                    {it}
-                  </span>
-                ))}
-              </div>
+          <Reveal
+            key={s.group}
+            delay={i * 50}
+            className="grid gap-1.5 border-t border-line py-6 sm:grid-cols-[160px_1fr] sm:gap-8"
+          >
+            <div className="pt-0.5 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-fg-faint">
+              {s.group}
             </div>
+            <p className="text-[0.95rem] leading-relaxed text-fg">
+              {s.items.join(" · ")}
+            </p>
           </Reveal>
         ))}
-      </div>
 
-      <Reveal delay={100}>
-        <div className="mt-6 panel rounded-lg p-6">
-          <div className="mb-4 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-teal">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal" />
-            Leadership & Positions
+        <Reveal
+          delay={150}
+          className="grid gap-1.5 border-t border-line py-6 sm:grid-cols-[160px_1fr] sm:gap-8"
+        >
+          <div className="pt-0.5 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-fg-faint">
+            Positions
           </div>
-          <ul className="grid gap-3 sm:grid-cols-3">
+          <ul className="space-y-2.5">
             {positions.map((p, i) => (
-              <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-text-dim">
-                <span className="mt-2 h-1 w-1 flex-none rounded-full bg-teal/70" />
-                <span>{p}</span>
+              <li key={i} className="text-[0.95rem] leading-relaxed text-fg-mute">
+                {p}
               </li>
             ))}
           </ul>
-        </div>
-      </Reveal>
-    </section>
+        </Reveal>
+        <div className="border-t border-line" />
+      </div>
+    </Section>
   );
 }

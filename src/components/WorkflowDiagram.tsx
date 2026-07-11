@@ -35,13 +35,13 @@ function StepNode({ data }: NodeProps<Node<StepData>>) {
     <div
       className={`font-hand flex items-center justify-center gap-1.5 rounded-[999px] border-2 px-3 text-center leading-tight ${
         active
-          ? "border-cyan/70 text-text-bright"
-          : "border-[var(--panel-border)] text-text"
+          ? "border-accent/60 text-fg-strong"
+          : "border-line-strong text-fg"
       }`}
-      style={{ width: NODE_W, height: NODE_H, background: "var(--bg)", fontSize: 13 }}
+      style={{ width: NODE_W, height: NODE_H, background: "var(--card)", fontSize: 13 }}
     >
       {!data.isFirst && <Handle type="target" position={Position.Left} style={handleStyle} />}
-      <span className={active ? "text-cyan" : "text-text-dim"} style={{ fontSize: 12 }}>
+      <span className={active ? "text-accent" : "text-fg-faint"} style={{ fontSize: 12 }}>
         {data.index + 1}.
       </span>
       <span className="truncate">{data.label}</span>
@@ -79,8 +79,8 @@ function LoopEdge({
             className="font-hand nodrag nopan pointer-events-none absolute rounded px-1.5"
             style={{
               transform: `translate(-50%, -50%) translate(${midX}px, ${dipY}px)`,
-              color: "var(--cyan)",
-              background: "var(--bg)",
+              color: "var(--accent)",
+              background: "var(--card)",
               fontSize: 13,
               whiteSpace: "nowrap",
             }}
@@ -93,7 +93,7 @@ function LoopEdge({
   );
 }
 
-const handleStyle = { background: "var(--cyan)", opacity: 0.5, width: 5, height: 5 };
+const handleStyle = { background: "var(--accent)", opacity: 0.5, width: 5, height: 5 };
 const nodeTypes = { step: StepNode };
 const edgeTypes = { loop: LoopEdge };
 
@@ -128,8 +128,8 @@ export default function WorkflowDiagram({ steps, loopFrom, loopTo, loopLabel }: 
         source: String(i),
         target: String(i + 1),
         type: "straight",
-        style: { stroke: "var(--panel-border)", strokeWidth: 1.75 },
-        markerEnd: { type: MarkerType.ArrowClosed, color: "var(--text-dim)", width: 14, height: 14 },
+        style: { stroke: "var(--line-strong)", strokeWidth: 1.75 },
+        markerEnd: { type: MarkerType.ArrowClosed, color: "var(--fg-faint)", width: 14, height: 14 },
       });
     }
     chain.push({
@@ -141,8 +141,8 @@ export default function WorkflowDiagram({ steps, loopFrom, loopTo, loopLabel }: 
       type: "loop",
       animated: true,
       label: `↺ ${loopLabel}`,
-      style: { stroke: "var(--cyan)", strokeWidth: 2, strokeDasharray: "5 3", opacity: 0.8 },
-      markerEnd: { type: MarkerType.ArrowClosed, color: "var(--cyan)", width: 13, height: 13 },
+      style: { stroke: "var(--accent)", strokeWidth: 2, strokeDasharray: "5 3", opacity: 0.8 },
+      markerEnd: { type: MarkerType.ArrowClosed, color: "var(--accent)", width: 13, height: 13 },
     });
     return chain;
   }, [n, loopFrom, loopTo, loopLabel]);
@@ -150,10 +150,9 @@ export default function WorkflowDiagram({ steps, loopFrom, loopTo, loopLabel }: 
   const height = NODE_H + LOOP_DIP + 34;
 
   return (
-    <div className="mt-5 border-t border-[var(--panel-border)] pt-4">
-      <div className="mb-2 flex items-center gap-2 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-text-dim">
-        <span className="h-1 w-1 rounded-full bg-cyan/60" />
-        Pipeline Trace
+    <div className="mt-6 border-t border-line pt-4">
+      <div className="mb-2 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-fg-faint">
+        How it works
       </div>
       <div style={{ width: "100%", height }}>
         <ReactFlow

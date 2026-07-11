@@ -32,6 +32,12 @@ export const ArrowIcon = ({ className = "h-4 w-4" }: P) => (
   </svg>
 );
 
+export const ArrowUpRightIcon = ({ className = "h-4 w-4" }: P) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden>
+    <path d="M7 17 17 7M9 7h8v8" />
+  </svg>
+);
+
 export const ExternalIcon = ({ className = "h-4 w-4" }: P) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden>
     <path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" />
