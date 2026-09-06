@@ -24,8 +24,8 @@ export default function CommandPalette({ onClose }: { onClose: () => void }) {
 
   const commands: Command[] = useMemo(
     () => [
-      { label: "Go to Work", hint: "section", action: () => scrollTo("work") },
       { label: "Go to Projects", hint: "section", action: () => scrollTo("projects") },
+      { label: "Go to Work", hint: "section", action: () => scrollTo("work") },
       { label: "Go to Recognition", hint: "section", action: () => scrollTo("recognition") },
       { label: "Go to Skills", hint: "section", action: () => scrollTo("skills") },
       { label: "Go to Contact", hint: "section", action: () => scrollTo("contact") },

@@ -17,6 +17,13 @@ export const profile = {
   ],
 };
 
+/** The hero split. One frame, read two ways: dithered down to a machine's view
+ * on the left, left alone on the right. */
+export const splitPortrait = {
+  src: "/images/portrait.jpg",
+  alt: "Satyam Patil standing above the Danube in Budapest, with the Hungarian Parliament behind him",
+};
+
 export const fieldPhoto = {
   src: "/images/summit-2400.jpg",
   mobileSrc: "/images/summit-mobile.jpg",
@@ -101,14 +108,17 @@ export const experience: Experience[] = [
   },
 ];
 
-export type Workflow = {
-  steps: string[];
-  loopFrom: number;
-  loopTo: number;
-  loopLabel: string;
-};
+/** Which environment renders behind a project. Each one is bespoke. */
+export type StageKind =
+  | "atlas" | "terminal" | "clusters" | "descent"
+  | "motion" | "browser" | "chain" | "rewrite";
 
 export type Project = {
+  /** Anchor id, also the command-palette target. */
+  slug: string;
+  stage: StageKind;
+  /** Real numbers from the work, shown beside it as evidence. */
+  metrics?: { label: string; value: string }[];
   name: string;
   blurb: string;
   detail: string;
@@ -120,13 +130,32 @@ export type Project = {
   imageSize?: { w: number; h: number };
   imageLayout?: "full" | "inline";
   video?: string;
+  /** Portrait clips sit beside the copy; a 16:9 demo spans the card instead. */
+  videoLayout?: "portrait" | "full";
   pdfHref?: string;
   pdfLabel?: string;
-  workflow?: Workflow;
 };
 
 export const projects: Project[] = [
   {
+    slug: "human-atlas",
+    stage: "atlas",
+    metrics: [{ label: "Selectable meshes", value: "2,234" }, { label: "Catalogue reduced", value: "47%" }, { label: "Invented ids rendered", value: "0" }],
+    name: "Human Atlas Assistant",
+    tag: "Open Source · 3D + LLM",
+    blurb: "Ask a 3D human body a question and watch it answer.",
+    detail:
+      "A grounded question layer for an open-source anatomy explorer of 2,234 individually selectable meshes. Plain-language questions fly the camera to the structures involved, recede everything else, and tag them on the model. Every identifier the model returns is checked against the atlas before it renders — invented ids are dropped, near-misses are repaired to the id the name actually belongs to, and structures the atlas genuinely lacks are reported as missing rather than swapped for something close.",
+    tech: ["TypeScript", "Three.js", "GLSL", "Gemma"],
+    href: "https://github.com/ashemag/human-atlas/pull/3",
+    hrefLabel: "Pull request",
+    video: "/videos/human-atlas-demo.mp4",
+    videoLayout: "full",
+  },
+  {
+    slug: "clai",
+    stage: "terminal",
+    metrics: [{ label: "Debugging automated", value: "80%" }, { label: "Memory", value: "FAISS" }],
     name: "CLAI",
     tag: "CLI AI Assistant",
     blurb: "A context-aware AI assistant for Windows with real long-term memory.",
@@ -137,21 +166,11 @@ export const projects: Project[] = [
     image: "/images/clai-terminal.jpg",
     imageSize: { w: 1048, h: 572 },
     imageLayout: "inline",
-    workflow: {
-      steps: [
-        "RAG Memory Search",
-        "Gemini LLM Call",
-        "Executable Check",
-        "Danger Check",
-        "Execute Command",
-        "Update Memory",
-      ],
-      loopFrom: 4,
-      loopTo: 1,
-      loopLabel: "exec failed",
-    },
   },
   {
+    slug: "pair-trading",
+    stage: "clusters",
+    metrics: [{ label: "Years of NSE data", value: "10" }, { label: "Usable clusters", value: "13" }],
     name: "Pair Trading Research",
     tag: "Quant Research",
     blurb: "Clustering-based statistical arbitrage over 10 years of NSE data.",
@@ -163,6 +182,8 @@ export const projects: Project[] = [
     imageLayout: "full",
   },
   {
+    slug: "khoj",
+    stage: "motion",
     name: "Khoj",
     tag: "Motion Design",
     blurb: "A code-first animation library for a poetic, minimal video series.",
@@ -170,14 +191,11 @@ export const projects: Project[] = [
       "Built a Motion Canvas-based animation pipeline to replace After Effects for the Khoj visual-storytelling series. Scenes are written in TypeScript, tweened declaratively, and rendered straight to video.",
     tech: ["TypeScript", "Motion Canvas", "Vite", "FFmpeg"],
     video: "/videos/khoj-demo.mp4",
-    workflow: {
-      steps: ["Write Scene (TSX)", "Define Tweening", "Live Preview (Vite)", "Adjust Timing", "Render (FFmpeg)"],
-      loopFrom: 3,
-      loopTo: 1,
-      loopLabel: "doesn't feel right",
-    },
   },
   {
+    slug: "rankit",
+    stage: "browser",
+    metrics: [{ label: "Status", value: "Live" }, { label: "Built end to end", value: "Solo" }],
     name: "Rankit",
     tag: "Co-founder · Live Product",
     blurb: "AI-powered JEE prep platform: mock tests, DPPs, and live rank contests.",
@@ -191,6 +209,9 @@ export const projects: Project[] = [
     imageLayout: "full",
   },
   {
+    slug: "cansat-gcs",
+    stage: "descent",
+    metrics: [{ label: "Apogee", value: "725 m" }, { label: "Global rank", value: "Top 21" }, { label: "Telemetry link", value: "2 km" }],
     name: "CanSat Ground Control",
     tag: "Aerospace",
     blurb: "Ground station commanding a can-sized satellite over a 2 km link.",
@@ -202,6 +223,8 @@ export const projects: Project[] = [
     pdfLabel: "View CDR PDF",
   },
   {
+    slug: "consistify",
+    stage: "chain",
     name: "Consistify",
     tag: "Blockchain",
     blurb: "On-chain habit tracker built on Flow with daily target verification.",
@@ -211,6 +234,9 @@ export const projects: Project[] = [
     href: "https://github.com/Satyampatil513/consistency",
   },
   {
+    slug: "resume-editor",
+    stage: "rewrite",
+    metrics: [{ label: "Status", value: "Live" }],
     name: "AI Resume Editor",
     tag: "Live Product",
     blurb: "Instant, targeted resume fixes powered by AI review.",
@@ -219,18 +245,6 @@ export const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "Supabase", "Cloudflare Workers"],
     href: "https://resume-editor-eta.vercel.app",
     hrefLabel: "Live demo",
-    workflow: {
-      steps: [
-        "Upload LaTeX Zip",
-        "User Input Modifications",
-        "AI Review Call (Gemini)",
-        "Worker Compiles (pdflatex)",
-        "Recompile (guarded)",
-      ],
-      loopFrom: 4,
-      loopTo: 2,
-      loopLabel: "auto-fix retry",
-    },
   },
 ];
 

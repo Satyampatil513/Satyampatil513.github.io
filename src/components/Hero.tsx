@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { profile, telemetry, fieldPhoto } from "@/lib/data";
+import { profile, telemetry, splitPortrait } from "@/lib/data";
 import Reveal from "./Reveal";
+import SplitPortrait from "./SplitPortrait";
 import { ArrowUpRightIcon } from "./Icons";
 
 export default function Hero() {
@@ -16,27 +16,13 @@ export default function Hero() {
         </p>
       </Reveal>
 
-      {/* photo + note */}
-      <div className="mt-14 grid gap-5 sm:mt-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
-        <Reveal className="relative min-h-[420px] overflow-hidden rounded-2xl border border-line lg:min-h-0">
-          <Image
-            src={fieldPhoto.mobileSrc}
-            alt={fieldPhoto.alt}
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 480px"
-            className="object-cover sm:hidden"
-          />
-          <Image
-            src={fieldPhoto.src}
-            alt={fieldPhoto.alt}
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 480px"
-            className="hidden object-cover sm:block"
-          />
-        </Reveal>
+      {/* the two halves of the work, and the seam between them */}
+      <Reveal delay={60} className="mt-14 sm:mt-16">
+        <SplitPortrait src={splitPortrait.src} alt={splitPortrait.alt} />
+      </Reveal>
 
+      {/* note */}
+      <div className="mt-14 grid gap-5 sm:mt-16">
         <Reveal delay={120} className="card rounded-2xl p-7 sm:p-9">
           <div className="space-y-5 text-[1.02rem] leading-relaxed text-fg">
             {profile.about.map((p, i) => (
