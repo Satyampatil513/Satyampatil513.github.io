@@ -9,7 +9,7 @@ export const profile = {
   links: {
     github: "https://github.com/Satyampatil513",
     linkedin: "https://linkedin.com/in/satyam-patil-045771223",
-    resume: "/resume.html",
+    resume: "/resume.pdf",
   },
   about: [
     "I'm a Research Engineer at Samsung Research working at the intersection of AI automation and low-level Android security, building pipelines that debug systems faster than humans can and hardening SELinux policy across production builds.",
@@ -75,11 +75,13 @@ export const experience: Experience[] = [
     start: "Jun 2025",
     end: "Present",
     status: "active",
-    stack: ["Android", "SELinux", "Security", "AI Automation"],
+    stack: ["LLM Agents", "RAG", "SEAndroid", "Android Security"],
     image: "/images/samsung-noida.jpg",
     bullets: [
-      "Engineered AI-driven automation pipelines for anomaly signal generation, SEAndroid policy validation, and issue resolution, automating 80% of manual debugging tasks and accelerating issue detection across system builds.",
-      "Resolved 100+ SEAndroid and security-module issues (policy misconfigurations, access violations, syscall denials), improving build stability, ICCC compliance, and debugging efficiency by 35%.",
+      "Built AX_Agent, a ReAct-loop agentic system that runs entirely on internal infrastructure. It exposes Samsung's own security and porting scripts as tools, so engineers drive multi-step porting and policy work in plain language — against a confidential codebase no external model is allowed anywhere near.",
+      "Built CoreBrain, a RAG system over internal JIRA, the project lifecycle around it, and the commits that actually closed each issue. Every case is distilled to a problem/solution pair, so a freshly filed bug arrives already carrying its closest prior fixes and a route to resolution.",
+      "Engineered an LLM-driven SEAndroid pipeline that triages incoming policy issues, drafts and validates candidate SELinux rules, and prepares the change lists — taking roughly 80% of policy debugging off engineers' hands.",
+      "Resolved 100+ SEAndroid and security-module issues — policy misconfigurations, access violations, syscall denials — and owned the ICCC module bridging the TEE and Rich OS, on both the trusted app and its Android-side client.",
     ],
   },
   {
@@ -155,13 +157,12 @@ export const projects: Project[] = [
   {
     slug: "clai",
     stage: "terminal",
-    metrics: [{ label: "Debugging automated", value: "80%" }, { label: "Memory", value: "FAISS" }],
     name: "CLAI",
     tag: "CLI AI Assistant",
-    blurb: "A context-aware AI assistant for Windows with real long-term memory.",
+    blurb: "A terminal agent that turns plain English into shell commands, and remembers.",
     detail:
-      "Short- and long-term memory via FAISS + FastEmbed gives persistent awareness of folders, past commands, and workflows; integrates Windows automation APIs for direct OS control, with a danger check gating any command before it runs.",
-    tech: ["Python", "FAISS", "FastEmbed", "Windows Automation"],
+      "Persistent long-term memory over past commands, folders and workflows — SQLite for the record, FAISS and FastEmbed for retrieval — so it carries context between sessions instead of starting cold every time. A confirmation gate stands in front of anything destructive, because an agent with shell access should have to ask.",
+    tech: ["Python", "SQLite", "FAISS", "Gemini API"],
     href: "https://github.com/Satyampatil513/CLAI",
     image: "/images/clai-terminal.jpg",
     imageSize: { w: 1048, h: 572 },
@@ -195,14 +196,14 @@ export const projects: Project[] = [
   {
     slug: "rankit",
     stage: "browser",
-    metrics: [{ label: "Status", value: "Live" }, { label: "Built end to end", value: "Solo" }],
+    metrics: [{ label: "Status", value: "Live" }, { label: "Stack owned", value: "Full" }],
     name: "Rankit",
     tag: "Co-founder · Live Product",
-    blurb: "AI-powered JEE prep platform: mock tests, DPPs, and live rank contests.",
+    blurb: "A live JEE mock-test platform, used by real students.",
     detail:
-      "Co-founded and built the platform end-to-end: adaptive mock tests, an accuracy-tiered daily practice problem engine, weekly contests, and performance analytics across topic, time, and difficulty.",
-    tech: ["Next.js", "FastAPI", "PostgreSQL", "React Native"],
-    href: "https://ed-tech-lyart-pi.vercel.app",
+      "Co-founded and own the full stack. A multi-agent analysis backend routes queries, decomposes tasks and picks tools: post-test SQL aggregates feed an LLM that pinpoints weak topics and writes personalised practice sets, sitting on a knowledge graph of topics as nodes and prerequisites as edges — so it traces the root-cause gap rather than matching topics that merely look similar. A vision-LLM pipeline classifies scanned questions into a deduplicated taxonomy and parses past papers, Word equations included.",
+    tech: ["FastAPI", "PostgreSQL", "LangGraph", "FAISS"],
+    href: "https://www.rankit.in",
     hrefLabel: "Live site",
     image: "/images/rankit-analytics.jpg",
     imageSize: { w: 1882, h: 443 },

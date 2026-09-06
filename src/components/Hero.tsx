@@ -68,7 +68,8 @@ export default function Hero() {
             <div className="mt-2 text-sm text-fg-faint">
               {profile.location}
               <br />
-              Jul 2026
+              {/* Server component: this resolves at build, so it stays current. */}
+              {new Date().toLocaleDateString("en-GB", { month: "short", year: "numeric" })}
             </div>
           </div>
         </Reveal>

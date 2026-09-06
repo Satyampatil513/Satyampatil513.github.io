@@ -10,7 +10,7 @@ import type { StageProps } from "../ProjectStage";
  * scaling keeps the real layout rather than a squashed mobile one. If the
  * embed fails the frame simply stays empty rather than showing a broken box —
  * the visit link below the copy is the reliable route in either case. */
-export default function BrowserStage({ active, align, url = "https://ed-tech-lyart-pi.vercel.app", label = "rankit.app" }: StageProps & { url?: string; label?: string }) {
+export default function BrowserStage({ active, align, url = "https://www.rankit.in", label = "rankit.in" }: StageProps & { url?: string; label?: string }) {
   const [failed, setFailed] = useState(false);
 
   return (

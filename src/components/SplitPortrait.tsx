@@ -191,21 +191,29 @@ export default function SplitPortrait({
         />
 
         {/* Captions */}
-        <div className="pointer-events-none absolute inset-0 p-5 sm:p-7">
-          <div className="flex h-full items-start justify-between gap-8">
+        {/* Both captions have to fit side by side inside the frame; at phone
+          * width two 15rem boxes plus the gap are wider than the viewport. */}
+        <div className="pointer-events-none absolute inset-0 p-3 sm:p-5 lg:p-7">
+          <div className="flex h-full items-start justify-between gap-2 sm:gap-5 lg:gap-8">
             <div
-              className="max-w-[15rem] rounded-lg bg-bg/70 px-3 py-2 backdrop-blur-[2px] transition-opacity duration-300"
+              className="min-w-0 max-w-[42%] rounded-md bg-bg/70 px-2 py-1.5 backdrop-blur-[2px] transition-opacity duration-300 sm:max-w-[15rem] sm:rounded-lg sm:px-3 sm:py-2"
               style={{ opacity: split > 16 ? 1 : 0 }}
             >
-              <div className="font-mono text-[0.7rem] tracking-[0.16em] text-accent">{leftLabel}</div>
-              <p className="mt-2 text-[0.82rem] leading-snug text-accent/75">{leftCopy}</p>
+              <div className="font-mono text-[0.5rem] tracking-[0.12em] text-accent sm:text-[0.7rem] sm:tracking-[0.16em]">
+                {leftLabel}
+              </div>
+              <p className="mt-1 text-[0.6rem] leading-snug text-accent/75 sm:mt-2 sm:text-[0.82rem]">
+                {leftCopy}
+              </p>
             </div>
             <div
-              className="max-w-[15rem] text-right transition-opacity duration-300"
+              className="min-w-0 max-w-[42%] text-right transition-opacity duration-300 sm:max-w-[15rem]"
               style={{ opacity: split < 84 ? 1 : 0 }}
             >
-              <div className="font-mono text-[0.7rem] tracking-[0.16em] text-fg-strong">{rightLabel}</div>
-              <p className="mt-2 text-[0.82rem] leading-snug text-fg-strong/80 [text-shadow:0_1px_10px_rgba(0,0,0,0.65)]">
+              <div className="font-mono text-[0.5rem] tracking-[0.12em] text-fg-strong sm:text-[0.7rem] sm:tracking-[0.16em]">
+                {rightLabel}
+              </div>
+              <p className="mt-1 text-[0.6rem] leading-snug text-fg-strong/80 [text-shadow:0_1px_10px_rgba(0,0,0,0.65)] sm:mt-2 sm:text-[0.82rem]">
                 {rightCopy}
               </p>
             </div>
