@@ -1,6 +1,7 @@
 import { profile } from "@/lib/data";
 import Reveal from "./Reveal";
 import { ArrowUpRightIcon } from "./Icons";
+import VisitCounter from "./VisitCounter";
 
 export default function Contact() {
   return (
@@ -54,7 +55,10 @@ export default function Contact() {
 
       <footer className="mt-20 flex flex-col items-center justify-between gap-2 border-t border-line pt-6 pb-4 text-xs text-fg-faint sm:flex-row">
         <span>© {new Date().getFullYear()} Satyam Patil</span>
-        <span>Built by hand, from {profile.location}.</span>
+        <span className="flex items-center gap-2">
+          Built by hand, from {profile.location}.
+          <VisitCounter />
+        </span>
       </footer>
     </section>
   );
