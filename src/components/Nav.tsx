@@ -10,21 +10,32 @@ const links = [
   { id: "contact", label: "Contact" },
 ];
 
-/** Below this, treat the page as "at the top". */
+/** Below this, treat the page as "at the top" and always show the bar. */
 const TOP_THRESHOLD = 120;
+/** Scroll movement smaller than this is ignored, so the bar does not flicker. */
+const DEAD_ZONE = 6;
 
 export default function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
   const [active, setActive] = useState("top");
-  const [atTop, setAtTop] = useState(true);
+  const [visible, setVisible] = useState(true);
 
-  // The bar gets out of the way once you start reading and comes back when you
-  // return to the top. Sections are full-viewport environments, so a permanent
-  // bar sits over whatever each one is doing.
+  // The bar gets out of the way while you read forward and comes straight back
+  // the moment you scroll up, so it is reachable from anywhere rather than only
+  // from the top. Sections are full-viewport environments, and a permanently
+  // fixed bar sits over whatever each one is doing.
   useEffect(() => {
     let frame = 0;
+    let last = window.scrollY;
     const measure = () => {
       frame = 0;
-      setAtTop(window.scrollY < TOP_THRESHOLD);
+      const y = window.scrollY;
+      const delta = y - last;
+      // Ignore sub-pixel drift and rubber-band overscroll, which would
+      // otherwise flicker the bar on every touch.
+      if (y < TOP_THRESHOLD) setVisible(true);
+      else if (delta > DEAD_ZONE) setVisible(false);
+      else if (delta < -DEAD_ZONE) setVisible(true);
+      last = y;
     };
     const onScroll = () => {
       if (frame) return;
@@ -58,9 +69,9 @@ export default function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
     <header
       // Hidden from pointer and keyboard while it is off-screen, so nobody can
       // tab into a bar they cannot see.
-      inert={!atTop}
+      inert={!visible}
       className={`fixed inset-x-0 top-4 z-40 flex justify-center px-4 transition-[opacity,transform] duration-300 ease-out sm:top-6 ${
-        atTop ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-[150%] opacity-0"
+        visible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-[150%] opacity-0"
       }`}
     >
       <nav
