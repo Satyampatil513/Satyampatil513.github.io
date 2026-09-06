@@ -171,10 +171,10 @@ export const projects: Project[] = [
   {
     slug: "pair-trading",
     stage: "clusters",
-    metrics: [{ label: "Years of NSE data", value: "10" }, { label: "Usable clusters", value: "13" }],
+    metrics: [{ label: "Years of BSE data", value: "10" }, { label: "Usable clusters", value: "13" }],
     name: "Pair Trading Research",
     tag: "Quant Research",
-    blurb: "Clustering-based statistical arbitrage over 10 years of NSE data.",
+    blurb: "Clustering-based statistical arbitrage over 10 years of BSE data.",
     detail:
       "Compared DBSCAN, OPTICS, and agglomerative clustering on PCA'd fundamentals; OPTICS won with 13 usable clusters. Every pair inside a cluster is Engle-Granger tested and screened by Hurst exponent for mean-reversion.",
     tech: ["Python", "pandas", "scikit-learn", "statsmodels"],
