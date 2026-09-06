@@ -10,8 +10,33 @@ const links = [
   { id: "contact", label: "Contact" },
 ];
 
+/** Below this, treat the page as "at the top". */
+const TOP_THRESHOLD = 120;
+
 export default function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
   const [active, setActive] = useState("top");
+  const [atTop, setAtTop] = useState(true);
+
+  // The bar gets out of the way once you start reading and comes back when you
+  // return to the top. Sections are full-viewport environments, so a permanent
+  // bar sits over whatever each one is doing.
+  useEffect(() => {
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      setAtTop(window.scrollY < TOP_THRESHOLD);
+    };
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(measure);
+    };
+    measure();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -30,7 +55,14 @@ export default function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-4 z-40 flex justify-center px-4 sm:top-6">
+    <header
+      // Hidden from pointer and keyboard while it is off-screen, so nobody can
+      // tab into a bar they cannot see.
+      inert={!atTop}
+      className={`fixed inset-x-0 top-4 z-40 flex justify-center px-4 transition-[opacity,transform] duration-300 ease-out sm:top-6 ${
+        atTop ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-[150%] opacity-0"
+      }`}
+    >
       <nav
         className="flex items-center gap-0.5 rounded-full border border-line px-1.5 py-1.5 shadow-[0_8px_28px_rgba(0,0,0,0.45)] backdrop-blur-md"
         style={{ background: "rgba(16,16,16,0.72)" }}

@@ -18,12 +18,18 @@ export default function AtlasStage({ active }: StageProps) {
           loop
           playsInline
           disablePictureInPicture
-          className="absolute inset-0 h-full w-full object-cover opacity-45"
+          // Contained on narrow screens: cover crops a 16:9 demo badly inside
+          // the mobile band, and the whole frame is the point here. On wide
+          // screens it is the section's background, so it fills.
+          className="absolute inset-0 h-full w-full object-contain opacity-90 lg:object-cover lg:opacity-45"
         />
       )}
+      {/* Only needed where the copy sits over the video. On mobile the band
+        * already fades into the text below it, and dimming a letterboxed demo
+        * twice just buries it. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/60"
+        className="absolute inset-0 hidden bg-gradient-to-t from-bg via-transparent to-bg/60 lg:block"
       />
     </div>
   );
