@@ -16,7 +16,7 @@ export default function Experience() {
             className="grid gap-3 border-t border-line py-9 sm:grid-cols-[160px_1fr] sm:gap-8"
           >
             <div className="pt-1 font-mono text-xs text-fg-faint">
-              {exp.start} — {exp.end}
+              {exp.start} – {exp.end}
               {exp.status === "active" && (
                 <span className="mt-2 hidden items-center gap-1.5 text-accent sm:flex">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
@@ -58,7 +58,7 @@ export default function Experience() {
                 <div className="relative h-44 w-full flex-none overflow-hidden rounded-xl border border-line sm:h-32 sm:w-44">
                   <Image
                     src={exp.image}
-                    alt={`${exp.org} — ${exp.role}`}
+                    alt={`${exp.org}, ${exp.role}`}
                     fill
                     sizes="(max-width: 640px) 100vw, 176px"
                     className="object-cover"

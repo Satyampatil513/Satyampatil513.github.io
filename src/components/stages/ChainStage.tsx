@@ -3,7 +3,7 @@
 import type { StageProps } from "../ProjectStage";
 
 const BLOCKS = 6;
-/** Fixed digests — the point is the linkage, not live hashing. */
+/** Fixed digests: the point is the linkage, not live hashing. */
 const HASHES = ["4f1a9c", "b207de", "91cc03", "e4a7b1", "0d38fa", "7c62e9"];
 
 /** The chain builds as you scroll: each block carries the previous digest. */

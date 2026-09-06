@@ -38,7 +38,7 @@ const STAGES: Record<StageKind, (props: StageProps) => React.ReactNode> = {
 
 /** Shared frame for an immersive project section.
  *
- * The stage is the environment — it owns the whole background. The copy sits
+ * The stage is the environment: it owns the whole background. The copy sits
  * over it in a readable column with a scrim behind, so every project can be as
  * loud as it likes without the text ever becoming the thing that suffers.
  */

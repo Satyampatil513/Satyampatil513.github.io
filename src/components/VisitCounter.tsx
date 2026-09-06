@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const ENDPOINT = "https://abacus.jasoncameron.dev/hit/satyampatil513.github.io/visits";
 
-/** Fires once per page load, not once per mount — React runs effects twice in
+/** Fires once per page load, not once per mount, because React runs effects twice in
  * development, which would otherwise count every local view as two. */
 let counted = false;
 
@@ -14,7 +14,7 @@ let counted = false;
  * means two honest limits: the endpoint is public, so the number can be
  * inflated by anyone who cares to, and the service is somebody's side project
  * that may one day stop answering. Neither is worth breaking a page over, so
- * this renders nothing at all unless it gets a number back — a failed request,
+ * this renders nothing at all unless it gets a number back: a failed request,
  * an ad blocker, or the service disappearing all just leave the footer as it
  * was.
  */

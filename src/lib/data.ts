@@ -78,10 +78,10 @@ export const experience: Experience[] = [
     stack: ["LLM Agents", "RAG", "SEAndroid", "Android Security"],
     image: "/images/samsung-noida.jpg",
     bullets: [
-      "Built AX_Agent, a ReAct-loop agentic system that runs entirely on internal infrastructure. It exposes Samsung's own security and porting scripts as tools, so engineers drive multi-step porting and policy work in plain language — against a confidential codebase no external model is allowed anywhere near.",
+      "Built AX_Agent, a ReAct-loop agentic system that runs entirely on internal infrastructure. It exposes Samsung's own security and porting scripts as tools, so engineers drive multi-step porting and policy work in plain language, against a confidential codebase no external model is allowed anywhere near.",
       "Built CoreBrain, a RAG system over internal JIRA, the project lifecycle around it, and the commits that actually closed each issue. Every case is distilled to a problem/solution pair, so a freshly filed bug arrives already carrying its closest prior fixes and a route to resolution.",
-      "Engineered an LLM-driven SEAndroid pipeline that triages incoming policy issues, drafts and validates candidate SELinux rules, and prepares the change lists — taking roughly 80% of policy debugging off engineers' hands.",
-      "Resolved 100+ SEAndroid and security-module issues — policy misconfigurations, access violations, syscall denials — and owned the ICCC module bridging the TEE and Rich OS, on both the trusted app and its Android-side client.",
+      "Engineered an LLM-driven SEAndroid pipeline that triages incoming policy issues, drafts and validates candidate SELinux rules, and prepares the change lists, taking roughly 80% of policy debugging off engineers' hands.",
+      "Resolved 100+ SEAndroid and security-module issues (policy misconfigurations, access violations, syscall denials) and owned the ICCC module bridging the TEE and Rich OS, on both the trusted app and its Android-side client.",
     ],
   },
   {
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     tag: "Open Source · 3D + LLM",
     blurb: "Ask a 3D human body a question and watch it answer.",
     detail:
-      "A grounded question layer for an open-source anatomy explorer of 2,234 individually selectable meshes. Plain-language questions fly the camera to the structures involved, recede everything else, and tag them on the model. Every identifier the model returns is checked against the atlas before it renders — invented ids are dropped, near-misses are repaired to the id the name actually belongs to, and structures the atlas genuinely lacks are reported as missing rather than swapped for something close.",
+      "A grounded question layer for an open-source anatomy explorer of 2,234 individually selectable meshes. Plain-language questions fly the camera to the structures involved, recede everything else, and tag them on the model. Every identifier the model returns is checked against the atlas before it renders: invented ids are dropped, near-misses are repaired to the id the name actually belongs to, and structures the atlas genuinely lacks are reported as missing rather than swapped for something close.",
     tech: ["TypeScript", "Three.js", "GLSL", "Gemma"],
     href: "https://github.com/ashemag/human-atlas/pull/3",
     hrefLabel: "Pull request",
@@ -161,7 +161,7 @@ export const projects: Project[] = [
     tag: "CLI AI Assistant",
     blurb: "A terminal agent that turns plain English into shell commands, and remembers.",
     detail:
-      "Persistent long-term memory over past commands, folders and workflows — SQLite for the record, FAISS and FastEmbed for retrieval — so it carries context between sessions instead of starting cold every time. A confirmation gate stands in front of anything destructive, because an agent with shell access should have to ask.",
+      "Persistent long-term memory over past commands, folders and workflows (SQLite for the record, FAISS and FastEmbed for retrieval), so it carries context between sessions instead of starting cold every time. A confirmation gate stands in front of anything destructive, because an agent with shell access should have to ask.",
     tech: ["Python", "SQLite", "FAISS", "Gemini API"],
     href: "https://github.com/Satyampatil513/CLAI",
     image: "/images/clai-terminal.jpg",
@@ -201,7 +201,7 @@ export const projects: Project[] = [
     tag: "Co-founder · Live Product",
     blurb: "A live JEE mock-test platform, used by real students.",
     detail:
-      "Co-founded and own the full stack. A multi-agent analysis backend routes queries, decomposes tasks and picks tools: post-test SQL aggregates feed an LLM that pinpoints weak topics and writes personalised practice sets, sitting on a knowledge graph of topics as nodes and prerequisites as edges — so it traces the root-cause gap rather than matching topics that merely look similar. A vision-LLM pipeline classifies scanned questions into a deduplicated taxonomy and parses past papers, Word equations included.",
+      "Co-founded and own the full stack. A multi-agent analysis backend routes queries, decomposes tasks and picks tools: post-test SQL aggregates feed an LLM that pinpoints weak topics and writes personalised practice sets, sitting on a knowledge graph of topics as nodes and prerequisites as edges, so it traces the root-cause gap rather than matching topics that merely look similar. A vision-LLM pipeline classifies scanned questions into a deduplicated taxonomy and parses past papers, Word equations included.",
     tech: ["FastAPI", "PostgreSQL", "LangGraph", "FAISS"],
     href: "https://www.rankit.in",
     hrefLabel: "Live site",

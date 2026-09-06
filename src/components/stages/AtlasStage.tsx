@@ -4,7 +4,7 @@ import type { StageProps } from "../ProjectStage";
 
 /** The anatomy takes the whole background.
  *
- * The demo carries the section on its own — it already shows the camera moving,
+ * The demo carries the section on its own, since it already shows the camera moving,
  * the surrounding structures receding and the viewer's own labels appearing, so
  * a second set of labels drawn over the top only competed with it. */
 export default function AtlasStage({ active }: StageProps) {

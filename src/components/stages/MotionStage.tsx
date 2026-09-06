@@ -13,7 +13,7 @@ const TRACKS = [
 /** A motion library, demonstrating itself.
  *
  * The vertical render loops behind, and the tween tracks beside it move on the
- * curves they are named after — the section is a timeline being scrubbed. */
+ * curves they are named after: the section is a timeline being scrubbed. */
 export default function MotionStage({ progress, active, align }: StageProps) {
   const t = Math.min(1, Math.max(0, (progress - 0.15) / 0.6));
 

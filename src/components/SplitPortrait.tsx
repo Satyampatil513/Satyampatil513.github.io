@@ -243,7 +243,7 @@ export default function SplitPortrait({
       </div>
 
       <figcaption className="mt-3 text-center font-mono text-[0.68rem] tracking-[0.14em] text-fg-faint">
-        DRAG THE HANDLE — I WORK WHERE THESE TWO MEET
+        DRAG THE HANDLE · I WORK WHERE THESE TWO MEET
       </figcaption>
     </figure>
   );

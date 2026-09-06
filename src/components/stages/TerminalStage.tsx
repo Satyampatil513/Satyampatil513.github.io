@@ -4,7 +4,7 @@ import type { StageProps } from "../ProjectStage";
 
 /** A real CLAI session, told in its own medium.
  *
- * Not a screenshot of a terminal — the section is the terminal, and scrolling
+ * Not a screenshot of a terminal: the section is the terminal, and scrolling
  * runs the session. The danger check refusing the command is the point of the
  * project, so it is the beat the whole sequence builds to. */
 const SESSION: { text: string; tone?: "cmd" | "trace" | "warn" | "ok" }[] = [
@@ -24,7 +24,7 @@ const SESSION: { text: string; tone?: "cmd" | "trace" | "warn" | "ok" }[] = [
   { text: "" },
   { text: "  instead   audit2allow -i denials.log -p policy", tone: "ok" },
   { text: "  writing   vendor_data_file.te (+4 lines)", tone: "ok" },
-  { text: "  memory    updated — 1 fix, 1 refusal", tone: "trace" },
+  { text: "  memory    updated: 1 fix, 1 refusal", tone: "trace" },
   { text: "" },
   { text: "$ ", tone: "cmd" },
 ];

@@ -28,7 +28,7 @@ export default function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
     let frame = 0;
     let last = window.scrollY;
     // Travel since the direction last changed. Comparing a single frame's delta
-    // instead would mean the bar only reacted to fast scrolling — at 60fps a
+    // instead would mean the bar only reacted to fast scrolling: at 60fps a
     // per-frame threshold of a few pixels needs several hundred pixels a second
     // before it ever triggers, so an unhurried read would never move it.
     let travelled = 0;

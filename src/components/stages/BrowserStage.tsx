@@ -8,8 +8,8 @@ import type { StageProps } from "../ProjectStage";
  * Framed and inert on purpose: `pointer-events: none` means it cannot steal
  * scroll or take anyone off the page, and rendering at desktop width then
  * scaling keeps the real layout rather than a squashed mobile one. If the
- * embed fails the frame simply stays empty rather than showing a broken box —
- * the visit link below the copy is the reliable route in either case. */
+ * embed fails the frame simply stays empty rather than showing a broken box.
+ * The visit link below the copy is the reliable route in either case. */
 export default function BrowserStage({ active, align, url = "https://www.rankit.in", label = "rankit.in" }: StageProps & { url?: string; label?: string }) {
   const [failed, setFailed] = useState(false);
 
