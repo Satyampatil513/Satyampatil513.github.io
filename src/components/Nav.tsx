@@ -12,8 +12,9 @@ const links = [
 
 /** Below this, treat the page as "at the top" and always show the bar. */
 const TOP_THRESHOLD = 120;
-/** Scroll movement smaller than this is ignored, so the bar does not flicker. */
-const DEAD_ZONE = 6;
+/** Pixels of travel in one direction before the bar reacts. Enough to shrug
+ * off momentum and rubber-band overscroll, small enough to feel immediate. */
+const INTENT = 48;
 
 export default function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
   const [active, setActive] = useState("top");
@@ -26,16 +27,34 @@ export default function Nav({ onOpenPalette }: { onOpenPalette: () => void }) {
   useEffect(() => {
     let frame = 0;
     let last = window.scrollY;
+    // Travel since the direction last changed. Comparing a single frame's delta
+    // instead would mean the bar only reacted to fast scrolling — at 60fps a
+    // per-frame threshold of a few pixels needs several hundred pixels a second
+    // before it ever triggers, so an unhurried read would never move it.
+    let travelled = 0;
     const measure = () => {
       frame = 0;
       const y = window.scrollY;
       const delta = y - last;
-      // Ignore sub-pixel drift and rubber-band overscroll, which would
-      // otherwise flicker the bar on every touch.
-      if (y < TOP_THRESHOLD) setVisible(true);
-      else if (delta > DEAD_ZONE) setVisible(false);
-      else if (delta < -DEAD_ZONE) setVisible(true);
       last = y;
+
+      if (y < TOP_THRESHOLD) {
+        travelled = 0;
+        setVisible(true);
+        return;
+      }
+      if (delta === 0) return;
+      // A change of direction starts the count again.
+      if (travelled !== 0 && Math.sign(delta) !== Math.sign(travelled)) travelled = 0;
+      travelled += delta;
+
+      if (travelled > INTENT) {
+        travelled = 0;
+        setVisible(false);
+      } else if (travelled < -INTENT) {
+        travelled = 0;
+        setVisible(true);
+      }
     };
     const onScroll = () => {
       if (frame) return;
