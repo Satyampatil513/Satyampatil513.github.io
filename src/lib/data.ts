@@ -113,7 +113,9 @@ export const experience: Experience[] = [
 /** Which environment renders behind a project. Each one is bespoke. */
 export type StageKind =
   | "atlas" | "terminal" | "clusters" | "descent"
-  | "motion" | "browser" | "chain" | "rewrite";
+  | "motion" | "browser" | "chain" | "rewrite" | "scan";
+
+export type ProjectLink = { label: string; href: string };
 
 export type Project = {
   /** Anchor id, also the command-palette target. */
@@ -127,6 +129,8 @@ export type Project = {
   tech: string[];
   href?: string;
   hrefLabel?: string;
+  /** For a project made of more than one repo/artifact; renders alongside href/pdfHref. */
+  links?: ProjectLink[];
   tag: string;
   image?: string;
   imageSize?: { w: number; h: number };
@@ -222,6 +226,22 @@ export const projects: Project[] = [
     href: "https://github.com/BlackDevil559/CANSAT__GCS__Application",
     pdfHref: "/cansat-cdr.pdf",
     pdfLabel: "View CDR PDF",
+  },
+  {
+    slug: "room-scan",
+    stage: "scan",
+    metrics: [{ label: "Detector precision", value: "96%" }, { label: "Training images", value: "2,000+" }],
+    name: "Room-Scan Inventory Pipeline",
+    tag: "Small-Object 3D Detection",
+    blurb: "Localizing objects as small as a book spine inside a room-scale 3D scan.",
+    detail:
+      "The hard part is scale: a LiDAR walkthrough captures a room in meters, but the objects worth cataloguing are a few centimeters wide, packed edge to edge, and low-texture enough that generic detectors miss or merge them. A SwiftUI/ARKit app records synchronized RGB, depth, pose, and audio during the walkthrough, auto-triggering stills by shelf coverage and blurring faces on-device before anything is written. A Python backend reconstructs room geometry from the depth point cloud into a dimensioned floor plan, then narrows from room-scale geometry down to individual objects with SAM2 and a fine-tuned YOLOv8-OBB spine detector, identifies and prices each one through multi-model LLM arbitration and ISBN/price lookups, and surfaces everything in a human-in-the-loop review UI.",
+    tech: ["Swift", "ARKit", "Python", "PyTorch", "SAM2", "YOLOv8-OBB", "FastAPI", "LLM Orchestration"],
+    links: [
+      { label: "Capture App", href: "https://github.com/Satyampatil513/library_app" },
+      { label: "Processing Pipeline", href: "https://github.com/Satyampatil513/library-processor" },
+      { label: "Floor Plan Sample", href: "/images/roomscan-floorplan.png" },
+    ],
   },
   {
     slug: "consistify",

@@ -11,6 +11,7 @@ import ClustersStage from "./stages/ClustersStage";
 import DescentStage from "./stages/DescentStage";
 import MotionStage from "./stages/MotionStage";
 import RewriteStage from "./stages/RewriteStage";
+import ScanStage from "./stages/ScanStage";
 import TerminalStage from "./stages/TerminalStage";
 
 /** `align` is where the copy sits, so a stage can place its own content
@@ -34,6 +35,7 @@ const STAGES: Record<StageKind, (props: StageProps) => React.ReactNode> = {
   browser: BrowserStage,
   chain: ChainStage,
   rewrite: RewriteStage,
+  scan: ScanStage,
 };
 
 /** Shared frame for an immersive project section.
@@ -133,7 +135,7 @@ export default function ProjectStage({
             ))}
           </div>
 
-          {(project.href || project.pdfHref) && (
+          {(project.href || project.pdfHref || project.links) && (
             <div className="mt-6 flex flex-wrap items-center gap-5 text-sm sm:mt-7">
               {project.href && (
                 <a href={project.href} target="_blank" rel="noopener noreferrer" className="link-accent">
@@ -147,6 +149,12 @@ export default function ProjectStage({
                   <ArrowUpRightIcon className="mb-0.5 ml-0.5 inline h-3.5 w-3.5" />
                 </a>
               )}
+              {project.links?.map((l) => (
+                <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="link-accent">
+                  {l.label}
+                  <ArrowUpRightIcon className="mb-0.5 ml-0.5 inline h-3.5 w-3.5" />
+                </a>
+              ))}
             </div>
           )}
         </div>
