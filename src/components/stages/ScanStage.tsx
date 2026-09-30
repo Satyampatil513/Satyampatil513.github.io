@@ -10,13 +10,21 @@ const SHELF_POINTS = 90;
 
 type Pt = { x: number; y: number; tx: number; ty: number; group: "room" | "shelf"; r: number };
 
+/** Fades in once the illustrated scan resolves, so the section ends on a real
+ * result rather than the stand-in geometry that got you there. */
+const REVEAL_AT = 0.85;
+
 /** The scan performs the detection problem, not just a room.
  *
  * A raw point cloud settles into a floor-plan outline as you scroll, same as
  * the room-reconstruction half of the pipeline. But one edge of that outline
  * is a shelf, and the points along it stay noisy and dense on purpose: they
  * only resolve into individual boxes once the detector actually fires, one
- * spine at a time, because that step is the hard one, not the geometry. */
+ * spine at a time, because that step is the hard one, not the geometry.
+ *
+ * The illustration is a stand-in; the payoff isn't. Past REVEAL_AT, a real
+ * isometric render from an actual processed capture fades in on the side the
+ * copy isn't using — every box and price on it came out of the pipeline. */
 export default function ScanStage({ progress, active, align }: StageProps) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const pts = useRef<Pt[]>([]);
@@ -78,7 +86,7 @@ export default function ScanStage({ progress, active, align }: StageProps) {
       // Room resolves early; the shelf band takes the rest of the scroll.
       const settle = Math.min(1, Math.max(0, (live.current - 0.08) / 0.45));
       const roomPull = settle * settle * (3 - 2 * settle);
-      const detect = Math.min(1, Math.max(0, (live.current - 0.5) / 0.42));
+      const detect = Math.min(1, Math.max(0, (live.current - 0.5) / 0.32));
 
       for (const p of pts.current) {
         const pull = p.group === "room" ? roomPull : Math.min(1, roomPull * 1.15);
@@ -116,8 +124,9 @@ export default function ScanStage({ progress, active, align }: StageProps) {
     return () => cancelAnimationFrame(frame);
   }, [active]);
 
-  const detect = Math.min(1, Math.max(0, (progress - 0.5) / 0.42));
+  const detect = Math.min(1, Math.max(0, (progress - 0.5) / 0.32));
   const fired = Math.floor(detect * DETECTIONS);
+  const reveal = Math.min(1, Math.max(0, (progress - REVEAL_AT) / (1 - REVEAL_AT)));
   const status =
     progress < 0.1
       ? "raw depth scan…"
@@ -125,14 +134,57 @@ export default function ScanStage({ progress, active, align }: StageProps) {
         ? "resolving room geometry…"
         : detect < 1
           ? `localizing shelf objects… ${fired}/${DETECTIONS}`
-          : "floor plan reconstructed · 24.6 m²";
+          : reveal < 1
+            ? "97 objects localized · ~₹63,000 estimated"
+            : "real output, from an actual processed capture";
 
   return (
-    <div className="h-full w-full bg-[#0b0c0c]">
+    <div className="h-full w-full overflow-hidden bg-[#0b0c0c]">
       <canvas ref={canvas} className="h-full w-full" aria-hidden="true" />
+
+      {/* The real payoff: an actual isometric render of a processed capture,
+        * every box and price read straight off the pipeline's own output.
+        * Anchored to the bottom like the readout below, not centered in the
+        * section: a tall section is centered in a lot more than one screen's
+        * worth of scroll, and the fade-in only reaches full opacity once the
+        * bottom edge is what's actually in view. Desktop only — the mobile
+        * band is too short for this and the readout to both fit. */}
+      <div
+        className={`pointer-events-none absolute bottom-8 hidden lg:block lg:w-[30%] ${
+          align === "right" ? "lg:left-8 lg:right-auto" : "lg:left-auto lg:right-8"
+        }`}
+        style={{ opacity: reveal, transform: `translateY(${(1 - reveal) * 14}px)` }}
+      >
+        <div className="w-full overflow-hidden rounded-xl border border-line-strong bg-[#0e0f0e] shadow-2xl">
+          <div className="flex items-center justify-between border-b border-line px-3 py-2">
+            <span className="font-mono text-[0.56rem] uppercase tracking-[0.14em] text-fg-faint">
+              real detection output
+            </span>
+            <span className="font-mono text-[0.56rem] text-accent">97 objects</span>
+          </div>
+          {/* Fixed height, not aspect-square: at this column width a square
+            * card can be taller than the scroll room left in the section, so
+            * a bottom-anchored reveal would spend most of its opacity above
+            * the fold. Crops the source render instead of resizing the card
+            * to it. */}
+          <div className="relative h-48 w-full overflow-hidden bg-black lg:h-56">
+            {/* Plain img, not next/image: this stage only ever runs client-side and the
+              * source is a fixed local asset, so the extra layer buys nothing. */}
+            <img
+              src="/images/roomscan-detections.png"
+              alt="Real isometric render of a processed room capture: 97 detected objects, each boxed and priced"
+              className="h-full w-full object-cover object-top"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Same side as the copy column, not the reveal panel: this is the process
+        * readout, so it belongs with the reading, not competing for the payoff's
+        * corner. */}
       <div
         className={`pointer-events-none absolute bottom-4 left-4 right-auto font-mono sm:bottom-8 ${
-          align === "right" ? "lg:left-8 lg:right-auto" : "lg:left-auto lg:right-8"
+          align === "right" ? "lg:left-auto lg:right-8" : "lg:left-8 lg:right-auto"
         }`}
       >
         <div className="text-[0.55rem] uppercase tracking-[0.16em] text-fg-faint sm:text-[0.62rem]">
